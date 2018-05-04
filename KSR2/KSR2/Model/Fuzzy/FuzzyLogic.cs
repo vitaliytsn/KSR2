@@ -14,12 +14,13 @@ namespace KSR2.Model.Fuzzy
 
         public FuzzyLogic(IFunction function)
         {
+           
             func = function;
         }
         public double membership(double x)
         {
             return func.count(x);
         }
-        public abstract double cardinalNumber(double[] arr);
+        public abstract double cardinalNumber();
     }
 }

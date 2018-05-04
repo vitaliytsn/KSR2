@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace KSR2.Model.Enums
 {
-    public enum Rase
+    public enum RelationShip
     {
-        White,
-        Asian_Pac_Islander,
-        Amer_Indian_Eskimo,
-        Other,
-        Black
+        Wife, Own_child, Husband, Not_in_family, Other_relative, Unmarried
     }
 }

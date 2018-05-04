@@ -4,15 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KSR2.Model.Enums
+namespace KSR2.Model.LinguisticSum
 {
-   public enum ShirtSize
+    class Linquistic
     {
-        S,
-        M,
-        L,
-        XS,
-        XL,
-        XM
     }
 }

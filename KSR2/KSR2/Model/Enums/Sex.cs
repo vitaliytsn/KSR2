@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KSR2.Model.Enums
 {
-   public enum Gender
+   public enum Sex
     {
         Female,
         Male

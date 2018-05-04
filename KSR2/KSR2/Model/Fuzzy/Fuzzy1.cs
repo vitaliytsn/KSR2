@@ -7,16 +7,30 @@ using KSR2.Model.Functions;
 
 namespace KSR2.Model.Fuzzy
 {
-    class Fuzzy1:FuzzyLogic
+    class Fuzzy1 : FuzzyLogic
     {
-        public Fuzzy1(IFunction function) : base(function)
+        double[] fuzzySet;
+        private double[] membershipRatio;
+
+        public Fuzzy1(IFunction function, double[] set) : base(function)
         {
+            fuzzySet = set;
+            membershipRatio= new double[set.Length];
+            for (int i = 0; i < fuzzySet.Length; i++)
+            {
+                membershipRatio[i] = base.membership(fuzzySet[i]);
+            }
         }
 
-        public override double cardinalNumber(double[] arr)
+        public double[] getRatio()
+        {
+            return membershipRatio;
+        }
+
+    public override double cardinalNumber()
         {
             double cardinal = 0;
-            foreach (var variable in arr)
+            foreach (var variable in membershipRatio)
             {
                 cardinal += base.func.count(variable);
             }

@@ -41,14 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Enums\Gender.cs" />
+    <Compile Include="Model\Enums\Education.cs" />
+    <Compile Include="Model\Enums\MartialStatus.cs" />
+    <Compile Include="Model\Enums\Occupation.cs" />
+    <Compile Include="Model\Enums\RelationShip.cs" />
+    <Compile Include="Model\Enums\Sex.cs" />
     <Compile Include="Model\Enums\Rase.cs" />
-    <Compile Include="Model\Enums\ShirtSize.cs" />
+    <Compile Include="Model\Enums\WorkClass.cs" />
     <Compile Include="Model\Fuzzy\Fuzzy1.cs" />
     <Compile Include="Model\Fuzzy\FuzzyLogic.cs" />
     <Compile Include="Model\Functions\IFunction.cs" />
     <Compile Include="Model\Functions\TrapezoidFunc.cs" />
     <Compile Include="Model\Functions\TriangleFunc.cs" />
+    <Compile Include="Model\Fuzzy\Label.cs" />
+    <Compile Include="Model\LinguisticSum\Linquistic.cs" />
     <Compile Include="Model\ParsingData\Person.cs" />
     <Compile Include="Model\ParsingData\ReadData.cs" />
     <Compile Include="Program.cs" />
