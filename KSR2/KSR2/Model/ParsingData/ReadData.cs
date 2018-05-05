@@ -46,20 +46,20 @@ namespace KSR2.Model.ParsingData
                 s = getNextWord(ref i, lines[q]);
 
                 if (s == "Bachelors") newPerson.education = Education.Bachelors;
-                if (s == "Some - college") newPerson.education = Education.Some_College;
+                if (s == "Some-college") newPerson.education = Education.Some_College;
                 if (s == "11th") newPerson.education = Education.Eleventh;
-                if (s == "HS - grad") newPerson.education = Education.HS_grad;
-                if (s == "Prof - school") newPerson.education = Education.Prof_school;
-                if (s == "Assoc - acdm") newPerson.education = Education.Assoc_acdm;
-                if (s == "Assoc - voc") newPerson.education = Education.Assoc_voc;
+                if (s == "HS-grad") newPerson.education = Education.HS_grad;
+                if (s == "Prof-school") newPerson.education = Education.Prof_school;
+                if (s == "Assoc-acdm") newPerson.education = Education.Assoc_acdm;
+                if (s == "Assoc-voc") newPerson.education = Education.Assoc_voc;
                 if (s == "9th") newPerson.education = Education.Nineth;
-                if (s == "7th - 8th") newPerson.education = Education.Seventh_Eighth;
+                if (s == "7th-8th") newPerson.education = Education.Seventh_Eighth;
                 if (s == "12th") newPerson.education = Education.Twelveth;
                 if (s == "Masters") newPerson.education = Education.Masters;
-                if (s == "1st - 4th") newPerson.education = Education.Firsth_Fourth;
+                if (s == "1st-4th") newPerson.education = Education.Firsth_Fourth;
                 if (s == "10th") newPerson.education = Education.Tenth;
                 if (s == "Doctorate") newPerson.education = Education.Doctorate;
-                if (s == "5th - 6th") newPerson.education = Education.Firsth_Fourth;
+                if (s == "5th-6th") newPerson.education = Education.Firsth_Fourth;
                 if (s == "Preschool") newPerson.education = Education.Preschool;
                 s = getNextWord(ref i, lines[q]);
                 //Martial Status

@@ -11,6 +11,19 @@ namespace KSR2.Model.Fuzzy
     {
         private string labelName;
         private Fuzzy1 fuzz;
+
+        public string LabelName
+        {
+            get { return labelName; }
+        }
+        public Fuzzy1 Fuzzy
+        {
+            get
+            {
+                return fuzz; 
+
+            }
+        }
         public Label(string label, IFunction func,double[] fuzzySet)
         {
             labelName = label;
@@ -26,6 +39,26 @@ namespace KSR2.Model.Fuzzy
             }
 
             return ratio;
+        }
+
+        public void FuzzySumm(Label summ)//czyli and S norma
+        {
+            this.labelName = this.labelName +" and "+ summ.labelName;
+            for (int i=0;i<fuzz.MembershipRatio.Length;i++)
+            {
+                if(summ.fuzz.MembershipRatio[i]< fuzz.MembershipRatio[i])
+                fuzz.MembershipRatio[i] = summ.fuzz.MembershipRatio[i];
+            }
+        }
+
+        public void FuzzySubraction(Label summ)//czyli or - T norma
+        {
+            this.labelName = this.labelName + " or " + summ.labelName;
+            for (int i = 0; i < fuzz.MembershipRatio.Length; i++)
+            {
+                if (summ.fuzz.MembershipRatio[i] > fuzz.MembershipRatio[i])
+                    fuzz.MembershipRatio[i] = summ.fuzz.MembershipRatio[i];
+            }
         }
     }
 }

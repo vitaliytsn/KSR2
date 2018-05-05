@@ -10,6 +10,13 @@ namespace KSR2.Model.Fuzzy
     class Fuzzy1 : FuzzyLogic
     {
         double[] fuzzySet;
+
+        public double[] MembershipRatio
+        {
+            get { return membershipRatio; }
+            set { membershipRatio = value; }
+        }
+
         private double[] membershipRatio;
 
         public Fuzzy1(IFunction function, double[] set) : base(function)

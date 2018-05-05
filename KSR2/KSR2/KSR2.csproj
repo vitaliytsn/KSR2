@@ -50,11 +50,11 @@
     <Compile Include="Model\Enums\WorkClass.cs" />
     <Compile Include="Model\Fuzzy\Fuzzy1.cs" />
     <Compile Include="Model\Fuzzy\FuzzyLogic.cs" />
-    <Compile Include="Model\Functions\IFunction.cs" />
-    <Compile Include="Model\Functions\TrapezoidFunc.cs" />
-    <Compile Include="Model\Functions\TriangleFunc.cs" />
+    <Compile Include="Functions\IFunction.cs" />
+    <Compile Include="Functions\TrapezoidFunc.cs" />
+    <Compile Include="Functions\TriangleFunc.cs" />
     <Compile Include="Model\Fuzzy\Label.cs" />
-    <Compile Include="Model\LinguisticSum\Linquistic.cs" />
+    <Compile Include="Model\Linguistic\Linquistic.cs" />
     <Compile Include="Model\ParsingData\Person.cs" />
     <Compile Include="Model\ParsingData\ReadData.cs" />
     <Compile Include="Program.cs" />
