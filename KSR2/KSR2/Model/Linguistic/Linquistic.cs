@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KSR2.Model.Fuzzy;
+using KSR2.Model.Fuzzy.Qualificators;
 
 namespace KSR2.Model.LinguisticSum
 {
     class Linquistic
     {
+        
         private List<Label> label;
         public Linquistic(List<Label> label)
         {
@@ -22,30 +24,36 @@ namespace KSR2.Model.LinguisticSum
             {
                 foreach (var lab in label)
                 {
+                    #region Kwantyfikator
                     double d = 0;
                     foreach (var VARIABLE in lab.MembershipRatio)
                     {
                         if (VARIABLE > 0)
                             d += 1;
                     }
-
                     d = d / lab.MembershipRatio.Length;
+                    #endregion
+
+                    #region Kwalifikator
+                    Qualificator qualificator;
+                    #endregion
+
+
                     Random rand = new Random();
+                    rand.Next(984);
                     int r = rand.Next(2);
                     string output = "";
-            
+                    
                     if (r == 0)
                     {
-                        d = Math.Round(d, 2);
-                        output = "Around " + Convert.ToString(d) + " people are " + lab.LabelName;
+                      qualificator= new NumberQualificator();
+                        output = qualificator.qualify(d, lab.LabelName);
                     }
 
                     if (r == 1)
                     {
-                        if (d >= 0.4) output = "majority of people " + " are " + lab.LabelName;
-                        if (d > 0.5 && d < 0.6) output = "more than half people " + " are " + lab.LabelName;
-                        if (d < 0.5 && d > 0.4) output = "around the half people" + " are " + lab.LabelName;
-                        if (d <= 0.4) output = "minority of people " + " are " + lab.LabelName;
+                       qualificator= new AbstractQualificator();
+                        output = qualificator.qualify(d, lab.LabelName);
                     }
                     writetext.WriteLine(output);
                 }
