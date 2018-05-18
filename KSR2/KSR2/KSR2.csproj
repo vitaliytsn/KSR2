@@ -49,7 +49,6 @@
     <Compile Include="Model\Enums\Rase.cs" />
     <Compile Include="Model\Enums\WorkClass.cs" />
     <Compile Include="Model\Fuzzy\Fuzzy1.cs" />
-    <Compile Include="Model\Fuzzy\FuzzyLogic.cs" />
     <Compile Include="Functions\IFunction.cs" />
     <Compile Include="Functions\TrapezoidFunc.cs" />
     <Compile Include="Functions\TriangleFunc.cs" />

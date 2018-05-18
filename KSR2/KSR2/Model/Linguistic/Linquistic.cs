@@ -23,17 +23,17 @@ namespace KSR2.Model.LinguisticSum
                 foreach (var lab in label)
                 {
                     double d = 0;
-                    foreach (var VARIABLE in lab.Fuzzy.MembershipRatio)
+                    foreach (var VARIABLE in lab.MembershipRatio)
                     {
                         if (VARIABLE > 0)
                             d += 1;
                     }
 
-                    d = d / lab.Fuzzy.MembershipRatio.Length;
+                    d = d / lab.MembershipRatio.Length;
                     Random rand = new Random();
                     int r = rand.Next(2);
                     string output = "";
-                    r = 0;
+            
                     if (r == 0)
                     {
                         d = Math.Round(d, 2);

@@ -9,56 +9,85 @@ namespace KSR2.Model.Fuzzy
 {
     class Label
     {
-        private string labelName;
-        private Fuzzy1 fuzz;
+        //sumaryzator
+        private string _labelName;
+        private Fuzzy1 _fuzz;
+        private IFunction _function;
+        private double[] _membershipRatio;
 
         public string LabelName
         {
-            get { return labelName; }
+            get { return _labelName; }
         }
         public Fuzzy1 Fuzzy
         {
             get
             {
-                return fuzz; 
+                return _fuzz; 
 
             }
         }
-        public Label(string label, IFunction func,double[] fuzzySet)
+        public IFunction Function
         {
-            labelName = label;
-            fuzz = new Fuzzy1(func, fuzzySet);
+            get { return _function;}
+            set { _function = value; }
         }
-
-        public double getRatio()
+        public double[] MembershipRatio
         {
-            double ratio = 0;
-            foreach (var VARIABLE in fuzz.getRatio())
+            get { return _membershipRatio; }
+            set { _membershipRatio = value; }
+        }
+        public Label(string label, IFunction func,Fuzzy1 fuzzy)
+        {
+            _labelName = label;
+            _fuzz = fuzzy;
+            _function = func;
+            _membershipRatio = new double[_fuzz.FuzzySet.Length];
+            for (int i = 0; i < _fuzz.FuzzySet.Length; i++)
             {
-                ratio += VARIABLE;
+                _membershipRatio[i] = membership(_fuzz.FuzzySet[i]);
             }
+        }
 
-            return ratio;
+        public Label(Label label)
+        {
+            this._labelName = label._labelName;
+            this._function = label._function;
+            this._fuzz = label._fuzz;
+            this._membershipRatio = label._membershipRatio;
+        }
+        public double membership(double x)
+        {
+            return _function.count(x);
         }
 
         public void FuzzySumm(Label summ)//czyli and S norma
         {
-            this.labelName = this.labelName +" and "+ summ.labelName;
-            for (int i=0;i<fuzz.MembershipRatio.Length;i++)
+            this._labelName = this._labelName +" and "+ summ._labelName;
+            for (int i=0;i<_membershipRatio.Length;i++)
             {
-                if(summ.fuzz.MembershipRatio[i]< fuzz.MembershipRatio[i])
-                fuzz.MembershipRatio[i] = summ.fuzz.MembershipRatio[i];
+                if(summ._membershipRatio[i]< _membershipRatio[i])
+                    _membershipRatio[i] = summ._membershipRatio[i];
             }
         }
 
         public void FuzzySubraction(Label summ)//czyli or - T norma
         {
-            this.labelName = this.labelName + " or " + summ.labelName;
-            for (int i = 0; i < fuzz.MembershipRatio.Length; i++)
+            this._labelName = this._labelName + " or " + summ._labelName;
+            for (int i = 0; i < _membershipRatio.Length; i++)
             {
-                if (summ.fuzz.MembershipRatio[i] > fuzz.MembershipRatio[i])
-                    fuzz.MembershipRatio[i] = summ.fuzz.MembershipRatio[i];
+                if (summ._membershipRatio[i] > _membershipRatio[i])
+                    _membershipRatio[i] = summ._membershipRatio[i];
             }
+        }
+        public  double cardinalNumber()
+        {
+            double cardinal = 0;
+            foreach (var variable in _membershipRatio)
+            {
+                cardinal += variable;
+            }
+            return cardinal;
         }
     }
 }
