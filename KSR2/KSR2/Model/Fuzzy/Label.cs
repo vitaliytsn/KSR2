@@ -10,6 +10,7 @@ namespace KSR2.Model.Fuzzy
     class Label
     {
         //sumaryzator
+        private List<Label> _insideLabels;
         private string _labelName;
         private Fuzzy1 _fuzz;
         private IFunction _function;
@@ -39,6 +40,7 @@ namespace KSR2.Model.Fuzzy
         }
         public Label(string label, IFunction func,Fuzzy1 fuzzy)
         {
+            _insideLabels= new List<Label>();
             _labelName = label;
             _fuzz = fuzzy;
             _function = func;
@@ -51,6 +53,7 @@ namespace KSR2.Model.Fuzzy
 
         public Label(Label label)
         {
+            this._insideLabels = label._insideLabels;
             this._labelName = label._labelName;
             this._function = label._function;
             this._fuzz = label._fuzz;
@@ -61,8 +64,9 @@ namespace KSR2.Model.Fuzzy
             return _function.count(x);
         }
 
-        public void FuzzySumm(Label summ)//czyli and S norma
+        public void FuzzySumm(Label summ)//czyli and - T norma
         {
+            
             this._labelName = this._labelName +" and "+ summ._labelName;
             for (int i=0;i<_membershipRatio.Length;i++)
             {
@@ -71,8 +75,9 @@ namespace KSR2.Model.Fuzzy
             }
         }
 
-        public void FuzzySubraction(Label summ)//czyli or - T norma
+        public void FuzzySubraction(Label summ) //czyli or S norma
         {
+            _insideLabels.Add(summ);
             this._labelName = this._labelName + " or " + summ._labelName;
             for (int i = 0; i < _membershipRatio.Length; i++)
             {
@@ -80,6 +85,7 @@ namespace KSR2.Model.Fuzzy
                     _membershipRatio[i] = summ._membershipRatio[i];
             }
         }
+
         public  double cardinalNumber()
         {
             double cardinal = 0;
