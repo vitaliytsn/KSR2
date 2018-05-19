@@ -102,7 +102,7 @@ namespace KSR2.Model.Fuzzy
             {
                 t *= label.cardinalNumber();
             }
-            t = Math.Pow(t,1/(_insideLabels.Count + 1));
+            t = Math.Pow(t,(double)1/(_insideLabels.Count + 1));
             return t;
         }
         public  double cardinalNumber()
