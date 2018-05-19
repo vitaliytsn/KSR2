@@ -53,11 +53,20 @@ namespace KSR2.Model.Fuzzy
 
         public Label(Label label)
         {
-            this._insideLabels = label._insideLabels;
+            this._insideLabels= new List<Label>();
+            foreach (var lab in label._insideLabels)
+            {
+                this._insideLabels.Add(new Label(lab));
+            }
             this._labelName = label._labelName;
             this._function = label._function;
             this._fuzz = label._fuzz;
-            this._membershipRatio = label._membershipRatio;
+            this._membershipRatio =new double[Fuzzy.FuzzySet.Length];
+            for (int i=0;i<label._membershipRatio.Length;i++)
+            {
+                _membershipRatio[i]=label._membershipRatio[i];
+            }
+          
         }
         public double membership(double x)
         {
@@ -66,7 +75,7 @@ namespace KSR2.Model.Fuzzy
 
         public void FuzzySumm(Label summ)//czyli and - T norma
         {
-            
+            _insideLabels.Add(summ);
             this._labelName = this._labelName +" and "+ summ._labelName;
             for (int i=0;i<_membershipRatio.Length;i++)
             {
@@ -86,14 +95,25 @@ namespace KSR2.Model.Fuzzy
             }
         }
 
+        public double degreeOfImprecision1()
+        {
+            double t = cardinalNumber();
+            foreach (var label in _insideLabels)
+            {
+                t *= label.cardinalNumber();
+            }
+            t = Math.Pow(t,1/(_insideLabels.Count + 1));
+            return t;
+        }
         public  double cardinalNumber()
         {
             double cardinal = 0;
             foreach (var variable in _membershipRatio)
             {
-                cardinal += variable;
+                if(variable>0)
+                cardinal += 1;
             }
-            return cardinal;
+            return cardinal/Fuzzy.FuzzySet.Length;
         }
     }
 }

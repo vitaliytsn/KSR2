@@ -36,7 +36,8 @@ namespace KSR2
 
             #region Labels
             //Black Races
-            Label raceLabel = new Label("BlackRaces", new TriangleFunc(4, 1), races);
+
+            Label raceLabel = new Label("White", new TriangleFunc(0, 1), races);
             //Avarege Salaries
             Label avarageSalaries = new Label("with AveregeSalaries", new TrapezoidFunc(240000, 200000, 260000, 300000), salaries);
             //Hight Education
@@ -50,7 +51,7 @@ namespace KSR2
             #endregion
 
 
-
+            lableList.Add(raceLabel);
 
             lableList.Add(blackRace_and_AvarageSalaries);
             lableList.Add(hightEducation_or_AvarageSalaries);

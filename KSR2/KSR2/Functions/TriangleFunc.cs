@@ -15,6 +15,12 @@ namespace KSR2.Model.Functions
             _etykietNum = etykietaNum;
             _etykietaDys = etykietaDys;
         }
+
+        public TriangleFunc(TriangleFunc fun)
+        {
+            _etykietNum = fun._etykietNum;
+            _etykietaDys = fun._etykietaDys;
+        }
         public double count(double x)
         {
             if (x > _etykietNum-_etykietaDys && x < _etykietNum+_etykietaDys)

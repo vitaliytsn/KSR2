@@ -43,17 +43,17 @@ namespace KSR2.Model.LinguisticSum
                     rand.Next(984);
                     int r = rand.Next(2);
                     string output = "";
-                    
+                    r = 0;
                     if (r == 0)
                     {
                       qualificator= new NumberQualificator();
-                        output = qualificator.qualify(d, lab.LabelName);
+                        output = qualificator.qualify(d, lab.LabelName) + "   Nieprecyzyjnosc " + Convert.ToString(lab.degreeOfImprecision1());
                     }
 
                     if (r == 1)
                     {
                        qualificator= new AbstractQualificator();
-                        output = qualificator.qualify(d, lab.LabelName);
+                        output = qualificator.qualify(d, lab.LabelName)+"   Nieprecyzyjnosc "+Convert.ToString(lab.degreeOfImprecision1());
                     }
                     writetext.WriteLine(output);
                 }
