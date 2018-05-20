@@ -10,8 +10,19 @@ namespace KSR2.Model.Fuzzy.Qualificators
     {
         public  string qualify(double cardinalNumber,string labelName)
         {
-            cardinalNumber = Math.Round(cardinalNumber, 2);
-           return "Around " + Convert.ToString(cardinalNumber) + " people are " + labelName;
+            if(cardinalNumber-0.01 == Math.Round(cardinalNumber, 3))
+            return "Around " + Convert.ToString(Math.Round(cardinalNumber, 2)) + " people are " + labelName;
+
+            if (cardinalNumber  == Math.Round(cardinalNumber, 3) + 0.01)
+                return "Around " + Convert.ToString(Math.Round(cardinalNumber, 2)) + " people are " + labelName;
+
+            if (Math.Round(cardinalNumber, 3) > cardinalNumber)
+                return "Little less then " + Convert.ToString(Math.Round(cardinalNumber, 2)) + " people are " + labelName;
+
+            if (Math.Round(cardinalNumber, 3)< cardinalNumber)
+                return "Almost "+Convert.ToString(Math.Round(cardinalNumber, 2)) + " people are " + labelName;
+
+            return "Around " + Convert.ToString(Math.Round(cardinalNumber, 2)) + " people are " + labelName;
         }
     }
 }

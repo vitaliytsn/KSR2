@@ -36,27 +36,51 @@ namespace KSR2
 
             #region Labels
             //Black Races
-
             Label raceLabel = new Label("Black", new TriangleFunc(4, 1), races);
+            
             //Avarege Salaries
             Label avarageSalaries = new Label("with AveregeSalaries", new TrapezoidFunc(240000, 200000, 260000, 300000), salaries);
+            
             //Hight Education
             Label hightEducation = new Label("with Hight Level Education ", new TriangleFunc(1, 2), educations);
+            
+            //avarageAge With triangle Function
+            Label avarageAgeTriangle = new Label("Avarage AgeTria",new TriangleFunc(30,10),ages);
+            
+            //avarageAge With trapezoid Function
+            Label avarageAgeTrapezoid = new Label("Avarage AgeTra", new TrapezoidFunc(25, 20,35,40), ages);
+
+            //Maried People
+            Label merried = new Label("Maried ",new TriangleFunc(0,1),martialStatuses);
+
             //Hight Education or avarage Salaries
             Label hightEducation_or_AvarageSalaries=new Label(hightEducation);
             hightEducation_or_AvarageSalaries.FuzzySubraction(avarageSalaries);
+            
             //Black race and Avarage salaries
             Label blackRace_and_AvarageSalaries = new Label(raceLabel);
             blackRace_and_AvarageSalaries.FuzzySumm(avarageSalaries);
+
+            //hight Education and Married
+            Label hightEducation_And_Married = new Label(merried);
+            hightEducation_And_Married.FuzzySumm(hightEducation);
+
+            //hight Education or Married
+            Label hightEducation_Or_Married = new Label(merried);
+            hightEducation_Or_Married.FuzzySubraction(hightEducation);
             #endregion
 
-
-            lableList.Add(raceLabel);
-
-            lableList.Add(blackRace_and_AvarageSalaries);
-            lableList.Add(hightEducation_or_AvarageSalaries);
-
             lableList.Add(avarageSalaries);
+            lableList.Add(merried);
+            lableList.Add(raceLabel);
+            lableList.Add(avarageAgeTriangle);
+            lableList.Add(avarageAgeTrapezoid);
+            lableList.Add(blackRace_and_AvarageSalaries);
+            lableList.Add(hightEducation_And_Married);
+            lableList.Add(hightEducation_or_AvarageSalaries);
+            lableList.Add(hightEducation_Or_Married);
+
+
             Linquistic l = new Linquistic(lableList);
             l.generateOutput();
             Console.ReadKey();
