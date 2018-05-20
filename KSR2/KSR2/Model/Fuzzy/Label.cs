@@ -95,6 +95,9 @@ namespace KSR2.Model.Fuzzy
             }
         }
 
+
+
+        #region Wspolczynniki poprawnosci
         public double degreeOfImprecision1()
         {
             double t = cardinalNumber();
@@ -102,9 +105,42 @@ namespace KSR2.Model.Fuzzy
             {
                 t *= label.cardinalNumber();
             }
-            t = Math.Pow(t,(double)1/(_insideLabels.Count + 1));
+            t = Math.Pow(t, (double)1 / (_insideLabels.Count + 1));
             return t;
         }
+
+        public double degreeOfCoverage()
+        {
+            double h = 0;
+            double t = 0;
+            for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
+            {
+                if (Fuzzy.FuzzySet[i] > 0) h++;
+            }
+
+            for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
+            {
+                if (Fuzzy.FuzzySet[i] > 0 && _membershipRatio[i] > 0) t++;
+            }
+
+            return t / h;
+        }
+
+        public double measureOfAccuracy()
+        {
+            double t4 = cardinalNumber();
+            foreach (var label in _insideLabels)
+            {
+                if(label.cardinalNumber()>0)
+                t4 *= label.cardinalNumber();
+            }
+            return Math.Abs(t4 - degreeOfCoverage());
+        }
+
+        #endregion
+
+
+
         public  double cardinalNumber()
         {
             double cardinal = 0;
