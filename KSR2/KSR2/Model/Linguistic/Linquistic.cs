@@ -57,25 +57,26 @@ namespace KSR2.Model.LinguisticSum
                         string output = "";
                         string outputNumbers = "";
                         r = 1;
-                        double max = 0;
+                        double max = -0.01;
                         Quantyficator selected= new Quantyficator();
 
                         string coverage = "";
+                        double number = 0;
                         foreach (var quantyficator in quantyficators)
                         {
-                            coverage+=" "+ Convert.ToString(lab.degreeOfCoverage());
-                            if (quantyficator.count(d) > max)
+                            coverage+=" "+ Convert.ToString(lab.degreeOfTruthfulness(quantyficator));
+                            number = lab.degreeOfTruthfulness(quantyficator) + lab.degreeOfCoverage() +
+                                     lab.degreeOfImprecision1() + lab.measureOfAccuracy();
+                            number = number / 4;
+                            if (number > max)
                             {
-                                max = quantyficator.count(d);
+                                max = number;
                                 selected = quantyficator;
                             }
                         }
 
-                        output = selected.LablelName + " of people are " + lab.LabelName;
-                        //Nieprecyzyjnosc Stopien Pokrycia MiaraTrafnosci
-                        outputNumbers =Convert.ToString(lab.degreeOfImprecision1())
-                                     + "   " + coverage +
-                                     "    " + Convert.ToString(lab.measureOfAccuracy());
+                        output = selected.LablelName + " of people are " + lab.LabelName+
+                                     "    " + Convert.ToString(max);
                         writenumbers.WriteLine(outputNumbers);
                         writetext.WriteLine(output);
                     }

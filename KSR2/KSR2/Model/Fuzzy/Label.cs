@@ -84,7 +84,7 @@ namespace KSR2.Model.Fuzzy
                     _membershipRatio[i] = summ._membershipRatio[i];
             }
         }
-
+       
         public void FuzzySubraction(Label summ) //czyli or S norma
         {
             _insideLabels.Add(summ);
@@ -99,6 +99,12 @@ namespace KSR2.Model.Fuzzy
 
 
         #region Wspolczynniki poprawnosci
+
+        public double degreeOfTruthfulness(Quantyficator q)
+        {
+            return q.count(cardinalNumber() * Fuzzy.FuzzySet.Length);
+        }
+
         public double degreeOfImprecision1()
         {
             double t = cardinalNumber();
@@ -116,18 +122,29 @@ namespace KSR2.Model.Fuzzy
             double t = 0;
             //D-cała baza
             //count(min(S and D))/Count(D)
-
-           /* for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
+            for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
             {
-                if (Fuzzy.FuzzySet[i] > 0) h++;
+                double k = 0;
+                if (Fuzzy.FuzzySet[i] < _membershipRatio[i]) k = Fuzzy.FuzzySet[i];
+                if (Fuzzy.FuzzySet[i] >= _membershipRatio[i]) k = _membershipRatio[i];
+                if (k > 0) t++;
             }
 
             for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
             {
-                if (q.count(Fuzzy.FuzzySet[i]) > 0 && _membershipRatio[i] > 0) t++;
-            }*/
+                if (Fuzzy.FuzzySet[i] > 0) h++;
+            }
+            /* for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
+             {
+                 if (Fuzzy.FuzzySet[i] > 0) h++;
+             }
 
-            return t / h;
+             for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
+             {
+                 if (q.count(Fuzzy.FuzzySet[i]) > 0 && _membershipRatio[i] > 0) t++;
+             }*/
+
+                return t / h;
         }
 
         public double measureOfAccuracy()
