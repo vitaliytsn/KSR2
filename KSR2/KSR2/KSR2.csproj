@@ -55,10 +55,11 @@
     <Compile Include="Model\Fuzzy\Label.cs" />
     <Compile Include="Model\Fuzzy\Qualificators\AbstractQualificator.cs" />
     <Compile Include="Model\Fuzzy\Qualificators\NumberQualificator.cs" />
-    <Compile Include="Model\Fuzzy\Qualificators\Qualificator.cs" />
+    <Compile Include="Model\Fuzzy\Qualificators\Quantyficator.cs" />
     <Compile Include="Model\Linguistic\Linquistic.cs" />
     <Compile Include="Model\ParsingData\Person.cs" />
     <Compile Include="Model\ParsingData\ReadData.cs" />
+    <Compile Include="Model\ParsingData\ReadQuantyficators.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

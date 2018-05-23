@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KSR2.Model.Functions
 {
-    class TrapezoidFunc:IFunction
+    public class TrapezoidFunc:IFunction
     {
         private double a;
         private double b;

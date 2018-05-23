@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KSR2.Model.Fuzzy.Qualificators
 {
-    class AbstractQualificator:Qualificator
+    class AbstractQualificator
     {
         public  string qualify(double cardinalNumber,string labelName)
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KSR2.Model.Functions;
+using KSR2.Model.Fuzzy.Qualificators;
 
 namespace KSR2.Model.Fuzzy
 {
@@ -113,15 +114,18 @@ namespace KSR2.Model.Fuzzy
         {
             double h = 0;
             double t = 0;
-            for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
+            //D-cała baza
+            //count(min(S and D))/Count(D)
+
+           /* for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
             {
                 if (Fuzzy.FuzzySet[i] > 0) h++;
             }
 
             for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
             {
-                if (Fuzzy.FuzzySet[i] > 0 && _membershipRatio[i] > 0) t++;
-            }
+                if (q.count(Fuzzy.FuzzySet[i]) > 0 && _membershipRatio[i] > 0) t++;
+            }*/
 
             return t / h;
         }

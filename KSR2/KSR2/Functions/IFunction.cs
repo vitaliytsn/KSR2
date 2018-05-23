@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KSR2.Model.Functions
 {
-    interface IFunction
+  public  interface IFunction
     {
         double count(double x);
     }

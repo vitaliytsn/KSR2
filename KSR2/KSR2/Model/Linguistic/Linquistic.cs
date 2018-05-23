@@ -13,8 +13,10 @@ namespace KSR2.Model.LinguisticSum
     {
 
         private List<Label> label;
-        public Linquistic(List<Label> label)
+        private List<Quantyficator> quantyficators;
+        public Linquistic(List<Label> label, List<Quantyficator> quantyficators)
         {
+            this.quantyficators = quantyficators;
             this.label = label;
         }
 
@@ -38,13 +40,13 @@ namespace KSR2.Model.LinguisticSum
                                 d += 1;
                         }
 
-                        d = d / lab.MembershipRatio.Length;
+                       
 
                         #endregion
 
                         #region Kwalifikator
 
-                        Qualificator qualificator;
+                        //Qualificator qualificator;
 
                         #endregion
 
@@ -54,22 +56,26 @@ namespace KSR2.Model.LinguisticSum
                         int r = rand.Next(2);
                         string output = "";
                         string outputNumbers = "";
-                        r = 0;
-                        if (r == 0)
+                        r = 1;
+                        double max = 0;
+                        Quantyficator selected= new Quantyficator();
+
+                        string coverage = "";
+                        foreach (var quantyficator in quantyficators)
                         {
-                            qualificator = new NumberQualificator();
-                            output = qualificator.qualify(d, lab.LabelName);
+                            coverage+=" "+ Convert.ToString(lab.degreeOfCoverage());
+                            if (quantyficator.count(d) > max)
+                            {
+                                max = quantyficator.count(d);
+                                selected = quantyficator;
+                            }
                         }
 
-                        if (r == 1)
-                        {
-                            qualificator = new AbstractQualificator();
-                            output = qualificator.qualify(d, lab.LabelName);
-                        }
+                        output = selected.LablelName + " of people are " + lab.LabelName;
                         //Nieprecyzyjnosc Stopien Pokrycia MiaraTrafnosci
                         outputNumbers =Convert.ToString(lab.degreeOfImprecision1())
-                                     + " " + Convert.ToString(lab.degreeOfCoverage()) +
-                                     " " + Convert.ToString(lab.measureOfAccuracy());
+                                     + "   " + coverage +
+                                     "    " + Convert.ToString(lab.measureOfAccuracy());
                         writenumbers.WriteLine(outputNumbers);
                         writetext.WriteLine(output);
                     }
