@@ -100,12 +100,12 @@ namespace KSR2.Model.Fuzzy
 
         #region Wspolczynniki poprawnosci
 
-        public double degreeOfTruthfulness(Quantyficator q)
+        public double degreeOfTruthfulness(Quantyficator q)//T1
         {
             return q.count(cardinalNumber() * Fuzzy.FuzzySet.Length);
         }
 
-        public double degreeOfImprecision1()
+        public double degreeOfImprecisionSumaryzator()//T2
         {
             double t = cardinalNumber();
             foreach (var label in _insideLabels)
@@ -116,7 +116,7 @@ namespace KSR2.Model.Fuzzy
             return t;
         }
 
-        public double degreeOfCoverage()
+        public double degreeOfCoverageSumaryzator()//T3
         {
             double h = 0;
             double t = 0;
@@ -134,20 +134,10 @@ namespace KSR2.Model.Fuzzy
             {
                 if (Fuzzy.FuzzySet[i] > 0) h++;
             }
-            /* for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
-             {
-                 if (Fuzzy.FuzzySet[i] > 0) h++;
-             }
-
-             for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
-             {
-                 if (q.count(Fuzzy.FuzzySet[i]) > 0 && _membershipRatio[i] > 0) t++;
-             }*/
-
                 return t / h;
         }
 
-        public double measureOfAccuracy()
+        public double measureOfAccuracySumaryzator()//T4
         {
             double t4 = cardinalNumber();
             foreach (var label in _insideLabels)
@@ -155,9 +145,54 @@ namespace KSR2.Model.Fuzzy
                 if(label.cardinalNumber()>0)
                 t4 *= label.cardinalNumber();
             }
-            return Math.Abs(t4 - degreeOfCoverage());
+            return Math.Abs(t4 - degreeOfCoverageSumaryzator());
         }
 
+        public double SumaryzatorLenght()
+        {
+
+            return 2 * Math.Pow(0.5, _insideLabels.Count + 1);
+        }
+
+        public double[] fillarr()//czesc wspolna dla T6 i T7
+        {
+            double[] arr = new double[Fuzzy.FuzzySet.Length];
+            for (int i = 0; i < Fuzzy.FuzzySet.Length; i++)
+            {
+                arr[i] = i;
+            }
+
+            return arr;
+        }
+
+        public double degreeOfCardinalitySumaryzator()//T8
+        {
+            double summ = cardinalNumber();
+            foreach (var label in _insideLabels)
+            {
+                summ *= label.cardinalNumber();
+            }
+            return 1 - Math.Pow(summ, (double) 1 / _membershipRatio.Length);
+        }
+        
+        public double degreeOfImprecisionQuantyficator(Quantyficator q)//T6
+        {
+            double[] arr = fillarr();
+            for (int i=0;i< Fuzzy.FuzzySet.Length;i++ )
+            {
+                arr[i] = q.count(arr[i]);
+            }
+
+            double d = 0;
+
+            foreach (var element in arr)
+            {
+                if (element > 0)
+                    d++;
+            }
+
+            return 1 - d / Fuzzy.FuzzySet.Length;
+        }
         #endregion
 
 

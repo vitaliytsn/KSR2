@@ -65,9 +65,12 @@ namespace KSR2.Model.LinguisticSum
                         foreach (var quantyficator in quantyficators)
                         {
                             coverage+=" "+ Convert.ToString(lab.degreeOfTruthfulness(quantyficator));
-                            number = lab.degreeOfTruthfulness(quantyficator) + lab.degreeOfCoverage() +
-                                     lab.degreeOfImprecision1() + lab.measureOfAccuracy();
-                            number = number / 4;
+                            number = lab.degreeOfTruthfulness(quantyficator) + lab.degreeOfImprecisionQuantyficator(quantyficator) 
+                                                   + lab.SumaryzatorLenght() + lab.degreeOfCoverageSumaryzator() +
+                                                                             +lab.degreeOfCardinalitySumaryzator()+
+                                     lab.degreeOfImprecisionSumaryzator() + lab.measureOfAccuracySumaryzator()
+                                       ;
+                            number = number / 7;
                             if (number > max)
                             {
                                 max = number;
