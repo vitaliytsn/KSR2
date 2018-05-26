@@ -106,5 +106,24 @@ namespace KSR2.Model.Fuzzy
 
             return 1 - d / lab.Fuzzy.FuzzySet.Length;
         }
+
+        public static double degreeOfImprecisionKwalifikator(Qualificator qua)//T9  Stopien nieprecyzyjnosci Kwalifiktora
+        {
+            double t = qua.cardinalNumber();
+            foreach (var label in qua.InsideQualificators)
+            {
+                t *= label.cardinalNumber();
+            }
+            t = Math.Pow(t, (double)1 / (qua.InsideQualificators.Count + 1));
+            return t;
+        }
+        public static double degreeOfCardinalityKwalifikator(Qualificator qua)//T10  Stopien kardynalnosci Sumaryzatora
+        {
+            return  qua.cardinalNumber();
+        }
+        public static double KwalifikatorLenght(Qualificator qua)//T11 Dlugosc kwalifikatora
+        {
+            return 2 * Math.Pow(0.5, qua.InsideQualificators.Count + 1);
+        }
     }
 }

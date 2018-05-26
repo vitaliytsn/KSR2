@@ -29,41 +29,47 @@ namespace KSR2.Model.LinguisticSum
 
         public void generateOutput()
         {
-            using (StreamWriter writetext = new StreamWriter(@"output_text.txt"))
+            if (qualificators == null)
+                output1Form();
+            else
             {
-                using (StreamWriter writenumbers = new StreamWriter(@"output_numbers.txt"))
-                {
-                    if (qualificators == null)
-                        writetext.Write(output1Form());
-                }
+                output2Form();
             }
         }
 
-        public string output1Form()// czyli bez kwalifikatora
+        public void output1Form()// czyli bez kwalifikatora
         {
-            string output = "";
-            foreach (var lab in label)
+            using (StreamWriter writetext = new StreamWriter(@"output_1text.txt"))
+            {
+
+                foreach (var lab in label)
                 {
+                    string output = "";
+                    //T1-T8
+
                     #region Kwantyfikator
+
                     //nasz kwantyfikator- bezwzględny
                     /*Q(a) = (0, a = 0,
                               1, a ∈ (0, 1].*/
+
                     #endregion
+
                     double max = -0.01;
                     Quantyficator selected = new Quantyficator();
-                    string coverage = "";
+
                     double number = 0;
                     foreach (var quantyficator in quantyficators)
                     {
-                        coverage += " " + Convert.ToString(Coefficients.degreeOfTruthfulness(quantyficator,lab));
                         number =
-                            Coefficients.degreeOfTruthfulness(quantyficator,lab) + Coefficients.degreeOfImprecisionQuantyficator(
-                                                                        quantyficator,lab)+Coefficients.degreesOfcardinalityQuantifier(quantyficator,lab)
-                                                                    + Coefficients.SumaryzatorLenght(lab) +
-                                                                    Coefficients.degreeOfCoverageSumaryzator(lab) +
-                                                                    +Coefficients.degreeOfCardinalitySumaryzator(lab) +
-                                                                    Coefficients.degreeOfImprecisionSumaryzator(lab) +
-                                                                    Coefficients.measureOfAccuracySumaryzator(lab)
+                            Coefficients.degreeOfTruthfulness(quantyficator, lab) +
+                            Coefficients.degreeOfImprecisionQuantyficator(
+                                quantyficator, lab) + Coefficients.degreesOfcardinalityQuantifier(quantyficator, lab)
+                            + Coefficients.SumaryzatorLenght(lab) +
+                            Coefficients.degreeOfCoverageSumaryzator(lab) +
+                            +Coefficients.degreeOfCardinalitySumaryzator(lab) +
+                            Coefficients.degreeOfImprecisionSumaryzator(lab) +
+                            Coefficients.measureOfAccuracySumaryzator(lab)
                             ;
                         number = number / 8;
                         if (number > max)
@@ -72,50 +78,58 @@ namespace KSR2.Model.LinguisticSum
                             selected = quantyficator;
                         }
                     }
-                    output += selected.LablelName + " of people are " + lab.LabelName +
-                             "    " + Convert.ToString(max)+" /r/n";
-                    
-                }
-            return output;
-        }
-        public string output2Form()// czyli bez kwalifikatora
-        {
-            string output = "";
-            foreach (var qua in qualificators)
-            {
-                #region Kwantyfikator
-                //nasz kwantyfikator- bezwzględny
-                /*Q(a) = (0, a = 0,
-                          1, a ∈ (0, 1].*/
-                #endregion
-                double max = -0.01;
-                Quantyficator selected = new Quantyficator();
-                string coverage = "";
-                double number = 0;
-              /*  foreach (var quantyficator in quantyficators)
-                {
-                    coverage += " " + Convert.ToString(lab.degreeOfTruthfulness(quantyficator));
-                    number =
-                        lab.degreeOfTruthfulness(quantyficator) + lab.degreeOfImprecisionQuantyficator(
-                                                                    quantyficator)
-                                                                + lab.SumaryzatorLenght() +
-                                                                lab.degreeOfCoverageSumaryzator() +
-                                                                +lab.degreeOfCardinalitySumaryzator() +
-                                                                lab.degreeOfImprecisionSumaryzator() +
-                                                                lab.measureOfAccuracySumaryzator()
-                        ;
-                    number = number / 7;
-                    if (number > max)
-                    {
-                        max = number;
-                        selected = quantyficator;
-                    }
-                }
-                output += selected.LablelName + " of people are " + lab.LabelName +
-                         "    " + Convert.ToString(max) + " /r/n";*/
 
+                    output = selected.LablelName + " of people are " + lab.LabelName +
+                              "    " + Convert.ToString(max);
+                    writetext.WriteLine(output);
+
+                }
             }
-            return output;
+        }
+        public void output2Form()// czyli bez kwalifikatora
+        {
+            using (StreamWriter writetext = new StreamWriter(@"output_2text.txt"))
+            {
+
+                foreach (var qua in qualificators)
+                {
+                    string output = "";
+                    //T1-T11
+                    double max = -0.01;
+                    Quantyficator selected = new Quantyficator();
+                    double number = 0;
+                    foreach (var quantyficator in quantyficators)
+                    {
+                        number =
+                            Coefficients.degreeOfTruthfulness(quantyficator, qua.Labell) +
+                            Coefficients.degreeOfImprecisionQuantyficator(
+                                quantyficator, qua.Labell) +
+                            Coefficients.degreesOfcardinalityQuantifier(quantyficator, qua.Labell)
+                            + Coefficients.SumaryzatorLenght(qua.Labell) +
+                            Coefficients.degreeOfCoverageSumaryzator(qua.Labell) +
+                            +Coefficients.degreeOfCardinalitySumaryzator(qua.Labell) +
+                            Coefficients.degreeOfImprecisionSumaryzator(qua.Labell) +
+                            Coefficients.measureOfAccuracySumaryzator(qua.Labell) +
+                            Coefficients.degreeOfImprecisionKwalifikator(qua) +
+                            Coefficients.degreeOfCardinalityKwalifikator(qua) +
+                            Coefficients.KwalifikatorLenght(qua)
+                            ;
+                        number = number / 11;
+                        if (number > max)
+                        {
+                            max = number;
+                            selected = quantyficator;
+                        }
+                    }
+
+                    output = selected.LablelName + " of people " + qua.QualificatorName + " are " +
+                              qua.Labell.LabelName +
+                              "    " + Convert.ToString(max);
+                    writetext.WriteLine(output);
+                }
+            }
+
+
         }
     }
 }

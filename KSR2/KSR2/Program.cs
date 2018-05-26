@@ -46,10 +46,10 @@ namespace KSR2
             Label hightEducation = new Label("with Hight Level Education ", new TriangleFunc(1, 2), educations);
 
             //avarageAge With triangle Function
-            Label avarageAgeTriangle = new Label("Avarage AgeTria", new TriangleFunc(30, 10), ages);
+            Label avarageAgeTriangle = new Label("Midle Age ", new TriangleFunc(30, 10), ages);
 
             //avarageAge With trapezoid Function
-            Label avarageAgeTrapezoid = new Label("Avarage AgeTra", new TrapezoidFunc(25, 20, 35, 40), ages);
+            Label avarageAgeTrapezoid = new Label("Midle AgeTra", new TrapezoidFunc(25, 20, 35, 40), ages);
 
             //Maried People
             Label merried = new Label("Maried ", new TriangleFunc(0, 1), martialStatuses);
@@ -66,6 +66,10 @@ namespace KSR2
             Label hightEducation_And_Married = new Label(merried);
             hightEducation_And_Married.FuzzySumm(hightEducation);
 
+            //middle age and Avarage salaries
+            Label middleAge_and_AvarageSalaries = new Label(avarageAgeTriangle);
+            middleAge_and_AvarageSalaries.FuzzySumm(avarageSalaries);
+
             //hight Education or Married
             Label hightEducation_Or_Married = new Label(merried);
             hightEducation_Or_Married.FuzzySubraction(hightEducation);
@@ -78,21 +82,28 @@ namespace KSR2
             hightEducation_Or_Married_Or_Black.FuzzySubraction(raceLabel);
             #endregion
 
-
-            #region Qualificators
-
-            Qualificator raceQualificator = new Qualificator("Black", new TriangleFunc(4, 1), avarageSalaries,races);
-
-            #endregion
-
             ReadQuantyficators rq = new ReadQuantyficators();
             List<Quantyficator> quantyficators = rq.read();
+
+            #region Qualificators
+            List<Qualificator> qualificators = new List<Qualificator>();
+            Qualificator raceQualificator = new Qualificator("which are Black race", new TriangleFunc(4, 1), avarageSalaries,races);
+            Qualificator hightEducation_Married = new Qualificator(" who has Hight Level Education ", new TriangleFunc(1, 2), merried,educations);
+            qualificators.Add(raceQualificator);
+            qualificators.Add(hightEducation_Married);
+            Linquistic lq = new Linquistic(qualificators, quantyficators);
+            lq.generateOutput();
+            #endregion
+
+            #region Labels
             // //   lableList.Add(raceLabel);
             //    lableList.Add(avarageSalaries);
             //     lableList.Add(hightEducation);
             //    lableList.Add(avarageAgeTriangle);
             //    lableList.Add(merried);
             //    lableList.Add(avarageAgeTrapezoid);
+           
+            lableList.Add(middleAge_and_AvarageSalaries);
             lableList.Add(blackRace_and_AvarageSalaries);
             lableList.Add(hightEducation_And_Married);
             lableList.Add(hightEducation_or_AvarageSalaries);
@@ -101,6 +112,8 @@ namespace KSR2
             lableList.Add(hightEducation_Or_Married_Or_Black);
             Linquistic l = new Linquistic(lableList, quantyficators);
             l.generateOutput();
+            #endregion
+
             Console.ReadKey();
         }
     }

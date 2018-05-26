@@ -34,11 +34,16 @@ namespace KSR2.Model.Fuzzy
                 if (_membershipRatio[i] > _label.MembershipRatio[i])
                     _membershipRatio[i] = _label.MembershipRatio[i];
             }
+
+            _label.MembershipRatio = _membershipRatio;
         }
 
 
 
-
+        public List<Qualificator> InsideQualificators
+        {
+            get { return _insideQualificators; }
+        }
 
 
         public string QualificatorName
