@@ -26,28 +26,14 @@
   <Class Name="KSR2.Model.Fuzzy.Label" Collapsed="true">
     <Position X="8.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAICAAAAAAQAAAgAAABAAAoAIACIABABgAEAAEEAAAA=</HashCode>
+      <HashCode>AAIAQAgAQAQAAAgAAABAFAIAoICIABABgAAAAEEAAAA=</HashCode>
       <FileName>Model\Fuzzy\Label.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="KSR2.Model.Fuzzy.Qualificators.AbstractQualificator" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="1.75" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\Fuzzy\Qualificators\AbstractQualificator.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="KSR2.Model.Fuzzy.Qualificators.NumberQualificator" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="4" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\Fuzzy\Qualificators\NumberQualificator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="KSR2.Model.LinguisticSum.Linquistic" Collapsed="true">
     <Position X="8.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAABAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Linguistic\Linquistic.cs</FileName>
     </TypeIdentifier>
   </Class>

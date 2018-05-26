@@ -16,7 +16,7 @@ namespace KSR2.Model.ParsingData
         public List<Quantyficator> read()
         {
             List<Quantyficator> quantyficators = new List<Quantyficator>();
-            string[] lines = System.IO.File.ReadAllLines(@"input_Qualificators.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input_Quantyficators.txt");
             foreach (var line in lines)
             {
                 Quantyficator q = new Quantyficator();

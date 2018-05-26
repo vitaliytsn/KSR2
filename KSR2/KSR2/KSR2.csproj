@@ -48,14 +48,14 @@
     <Compile Include="Model\Enums\Sex.cs" />
     <Compile Include="Model\Enums\Rase.cs" />
     <Compile Include="Model\Enums\WorkClass.cs" />
+    <Compile Include="Model\Fuzzy\Coefficients.cs" />
     <Compile Include="Model\Fuzzy\Fuzzy1.cs" />
     <Compile Include="Functions\IFunction.cs" />
     <Compile Include="Functions\TrapezoidFunc.cs" />
     <Compile Include="Functions\TriangleFunc.cs" />
     <Compile Include="Model\Fuzzy\Label.cs" />
-    <Compile Include="Model\Fuzzy\Qualificators\AbstractQualificator.cs" />
-    <Compile Include="Model\Fuzzy\Qualificators\NumberQualificator.cs" />
-    <Compile Include="Model\Fuzzy\Qualificators\Quantyficator.cs" />
+    <Compile Include="Model\Fuzzy\Qualificator.cs" />
+    <Compile Include="Model\Fuzzy\Quantyficator.cs" />
     <Compile Include="Model\Linguistic\Linquistic.cs" />
     <Compile Include="Model\ParsingData\Person.cs" />
     <Compile Include="Model\ParsingData\ReadData.cs" />

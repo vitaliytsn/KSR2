@@ -77,6 +77,14 @@ namespace KSR2
             Label hightEducation_Or_Married_Or_Black = new Label(hightEducation_Or_Married);
             hightEducation_Or_Married_Or_Black.FuzzySubraction(raceLabel);
             #endregion
+
+
+            #region Qualificators
+
+            Qualificator raceQualificator = new Qualificator("Black", new TriangleFunc(4, 1), avarageSalaries,races);
+
+            #endregion
+
             ReadQuantyficators rq = new ReadQuantyficators();
             List<Quantyficator> quantyficators = rq.read();
             // //   lableList.Add(raceLabel);
