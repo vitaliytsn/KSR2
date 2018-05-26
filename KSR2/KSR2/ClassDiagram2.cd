@@ -1,111 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="KSR2.Model.Functions.TrapezoidFunc" Collapsed="true">
-    <Position X="1.75" Y="1.25" Width="1.5" />
+  <Class Name="KSR2.Model.Fuzzy.Coefficients">
+    <Position X="2.5" Y="0.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAACkAQAAAAAAAAA=</HashCode>
-      <FileName>Functions\TrapezoidFunc.cs</FileName>
+      <HashCode>AAACQAgAQAAAUAAAAAAAFAAAgIAAAAAQAAAAAEAAAAA=</HashCode>
+      <FileName>Model\Fuzzy\Coefficients.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="KSR2.Model.Functions.TriangleFunc" Collapsed="true">
-    <Position X="4" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAgABAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>Functions\TriangleFunc.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="KSR2.Model.Fuzzy.Fuzzy1" Collapsed="true">
-    <Position X="8.75" Y="4.25" Width="1.5" />
+  <Class Name="KSR2.Model.Fuzzy.Fuzzy1">
+    <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAIAAAA=</HashCode>
       <FileName>Model\Fuzzy\Fuzzy1.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KSR2.Model.Fuzzy.Label" Collapsed="true">
-    <Position X="8.75" Y="3.5" Width="1.5" />
+  <Class Name="KSR2.Model.Fuzzy.Label">
+    <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAQAgAQAQAAAgAAABAFAIAoICIABABgAAAAEEAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAQAAAgAAABAAAIAIACIABABgAAAAEEEAAA=</HashCode>
       <FileName>Model\Fuzzy\Label.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KSR2.Model.LinguisticSum.Linquistic" Collapsed="true">
-    <Position X="8.75" Y="2.75" Width="1.5" />
+  <Class Name="KSR2.Model.Fuzzy.Qualificator">
+    <Position X="11.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABAAAAAAAABAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\Linguistic\Linquistic.cs</FileName>
+      <HashCode>AAKAAAAAEAAAAAgAABBAAALAIAAIAAAFAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Fuzzy\Qualificator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KSR2.Model.Fuzzy.Qualificators.Quantyficator">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAABEAAAAIAAAAAABABAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Fuzzy\Quantyficator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="KSR2.Model.ParsingData.Person">
-    <Position X="6.5" Y="2.5" Width="1.5" />
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACkAAAAAgQAAAQAAAgAAAAAAAADEAAAAACAEAAAA=</HashCode>
       <FileName>Model\ParsingData\Person.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KSR2.Model.ParsingData.ReadData" Collapsed="true">
-    <Position X="8.75" Y="5" Width="1.5" />
+  <Class Name="KSR2.Model.LinguisticSum.Linquistic">
+    <Position X="6.5" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAABAAA=</HashCode>
-      <FileName>Model\ParsingData\ReadData.cs</FileName>
+      <HashCode>AAAABAAAAAAAABAAAgAAAAEAAAACAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Model\Linguistic\Linquistic.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="KSR2.Model.Functions.IFunction" Collapsed="true">
-    <Position X="2.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Functions\IFunction.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Enum Name="KSR2.Model.Enums.Education" Collapsed="true">
-    <Position X="6" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgABAAAAIABSAAAIAAAACAAQQAAEIAIAAAAAAAAAhAA=</HashCode>
-      <FileName>Model\Enums\Education.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="KSR2.Model.Enums.MartialStatus" Collapsed="true">
-    <Position X="7.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAFAAAAIAAAAAAAAEAAAAAAAAAAkACAA=</HashCode>
-      <FileName>Model\Enums\MartialStatus.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="KSR2.Model.Enums.Occupation" Collapsed="true">
-    <Position X="9" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>CBAABAIBEAIAAAQAEAAABAAAAAAMABAAAAAAAAAAQAA=</HashCode>
-      <FileName>Model\Enums\Occupation.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="KSR2.Model.Enums.Rase" Collapsed="true">
-    <Position X="6" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BAAEFAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\Enums\Rase.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="KSR2.Model.Enums.RelationShip" Collapsed="true">
-    <Position X="7.5" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIAEAAAAAAAgAAAAICBAAAAA=</HashCode>
-      <FileName>Model\Enums\RelationShip.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="KSR2.Model.Enums.Sex" Collapsed="true">
-    <Position X="9" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
-      <FileName>Model\Enums\Sex.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="KSR2.Model.Enums.WorkClass" Collapsed="true">
-    <Position X="7.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAQEAAAAAAAAAAAAAFAAAAAEAAAAAAAAAAAEIAQAAA=</HashCode>
-      <FileName>Model\Enums\WorkClass.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

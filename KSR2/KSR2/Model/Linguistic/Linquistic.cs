@@ -63,15 +63,13 @@ namespace KSR2.Model.LinguisticSum
                     {
                         number =
                             Coefficients.degreeOfTruthfulness(quantyficator, lab) +
-                            Coefficients.degreeOfImprecisionQuantyficator(
-                                quantyficator, lab) + Coefficients.degreesOfcardinalityQuantifier(quantyficator, lab)
-                            + Coefficients.SumaryzatorLenght(lab) +
+                             Coefficients.SumaryzatorLenght(lab) +
                             Coefficients.degreeOfCoverageSumaryzator(lab) +
-                            +Coefficients.degreeOfCardinalitySumaryzator(lab) +
+                            +
                             Coefficients.degreeOfImprecisionSumaryzator(lab) +
                             Coefficients.measureOfAccuracySumaryzator(lab)
                             ;
-                        number = number / 8;
+                        number = number / 5;
                         if (number > max)
                         {
                             max = number;

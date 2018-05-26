@@ -22,6 +22,15 @@ namespace KSR2.Model.Functions
             this.c = c;
             this.d = d;
         }
+
+        public double square()
+        {
+            return (a - b) * (d - c);
+        }
+        public double distance()
+        {
+            return d-b;
+        }
         public double count(double x)
         {
             if (x >= a && x <= c) return 1;

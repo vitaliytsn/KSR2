@@ -9,5 +9,7 @@ namespace KSR2.Model.Functions
   public  interface IFunction
     {
         double count(double x);
+        double distance();
+        double square();
     }
 }

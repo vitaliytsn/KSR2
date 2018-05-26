@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,10 +17,20 @@ namespace KSR2.Model.Functions
             _etykietaDys = etykietaDys;
         }
 
+
         public TriangleFunc(TriangleFunc fun)
         {
             _etykietNum = fun._etykietNum;
             _etykietaDys = fun._etykietaDys;
+        }
+
+        public double square()
+        {
+            return (_etykietNum -_etykietaDys);
+        }
+        public double distance()
+        {
+            return _etykietNum;
         }
         public double count(double x)
         {

@@ -28,5 +28,10 @@ namespace KSR2.Model.Fuzzy.Qualificators
         {
             return _function.count(d);
         }
+
+        public double cardinalNumber()
+        {
+            return  _function.distance();
+        }
     }
 }

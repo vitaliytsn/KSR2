@@ -58,6 +58,10 @@ namespace KSR2
             Label hightEducation_or_AvarageSalaries = new Label(hightEducation);
             hightEducation_or_AvarageSalaries.FuzzySubraction(avarageSalaries);
 
+            //Hight Education or Black race
+            Label hightEducation_or_Black = new Label(hightEducation);
+            hightEducation_or_Black.FuzzySubraction(raceLabel);
+
             //Black race and Avarage salaries
             Label blackRace_and_AvarageSalaries = new Label(raceLabel);
             blackRace_and_AvarageSalaries.FuzzySumm(avarageSalaries);
@@ -89,6 +93,8 @@ namespace KSR2
             List<Qualificator> qualificators = new List<Qualificator>();
             Qualificator raceQualificator = new Qualificator("which are Black race", new TriangleFunc(4, 1), avarageSalaries,races);
             Qualificator hightEducation_Married = new Qualificator(" who has Hight Level Education ", new TriangleFunc(1, 2), merried,educations);
+            Qualificator avarageAgeTriangle_AvarageSalaries = new Qualificator(" has middle age ", new TriangleFunc(30, 10), hightEducation_Or_Married_Or_Black, ages);
+            qualificators.Add(avarageAgeTriangle_AvarageSalaries);
             qualificators.Add(raceQualificator);
             qualificators.Add(hightEducation_Married);
             Linquistic lq = new Linquistic(qualificators, quantyficators);
@@ -96,19 +102,19 @@ namespace KSR2
             #endregion
 
             #region Labels
-            // //   lableList.Add(raceLabel);
-            //    lableList.Add(avarageSalaries);
-            //     lableList.Add(hightEducation);
-            //    lableList.Add(avarageAgeTriangle);
-            //    lableList.Add(merried);
-            //    lableList.Add(avarageAgeTrapezoid);
+                lableList.Add(raceLabel);
+                lableList.Add(avarageSalaries);
+                 lableList.Add(hightEducation);
+                lableList.Add(avarageAgeTriangle);
+                lableList.Add(merried);
+                lableList.Add(avarageAgeTrapezoid);
            
             lableList.Add(middleAge_and_AvarageSalaries);
             lableList.Add(blackRace_and_AvarageSalaries);
             lableList.Add(hightEducation_And_Married);
             lableList.Add(hightEducation_or_AvarageSalaries);
             lableList.Add(hightEducation_Or_Married);
-            lableList.Add(hightEducation_Or_Married_And_Black);
+            lableList.Add(hightEducation_or_Black);
             lableList.Add(hightEducation_Or_Married_Or_Black);
             Linquistic l = new Linquistic(lableList, quantyficators);
             l.generateOutput();

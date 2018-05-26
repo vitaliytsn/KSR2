@@ -84,9 +84,9 @@ namespace KSR2.Model.Fuzzy
             return 1 - Math.Pow(summ, (double)1 / lab.MembershipRatio.Length);
         }
 
-        public static double degreesOfcardinalityQuantifier(Quantyficator q, Label lab)
+        public static double degreesOfcardinalityQuantifier(Quantyficator q, Label lab)//T7
         {
-            return 0.5;
+            return 1- q.cardinalNumber()/lab.MembershipRatio.Length;
         }
         public static double degreeOfImprecisionQuantyficator(Quantyficator q,Label lab)//T6 Stopien nieprecyzyjnosci Kwantyfikatora
         {
@@ -104,7 +104,7 @@ namespace KSR2.Model.Fuzzy
                     d++;
             }
 
-            return 1 - d / lab.Fuzzy.FuzzySet.Length;
+            return  d / lab.Fuzzy.FuzzySet.Length;
         }
 
         public static double degreeOfImprecisionKwalifikator(Qualificator qua)//T9  Stopien nieprecyzyjnosci Kwalifiktora
