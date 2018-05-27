@@ -82,7 +82,7 @@ namespace KSR2.Model.Fuzzy
             return _function.count(x);
         }
 
-        public void FuzzySumm(Label summ)//czyli and - T norma
+        public void FuzzySubraction(Label summ)//czyli or - S norma
         {
             _insideLabels.Add(summ);
             this._labelName = this._labelName +" and "+ summ._labelName;
@@ -93,7 +93,7 @@ namespace KSR2.Model.Fuzzy
             }
         }
        
-        public void FuzzySubraction(Label summ) //czyli or S norma
+        public void FuzzySumm(Label summ) //czyli and T norma
         {
             _insideLabels.Add(summ);
             this._labelName = this._labelName + " or " + summ._labelName;

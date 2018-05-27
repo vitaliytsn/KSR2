@@ -62,38 +62,38 @@ namespace KSR2
 
             //Hight Education or avarage Salaries
             Label hightEducation_or_AvarageSalaries = new Label(hightEducation);
-            hightEducation_or_AvarageSalaries.FuzzySubraction(avarageSalaries);
+            hightEducation_or_AvarageSalaries.FuzzySumm(avarageSalaries);//sub
 
             //managers who has avarage salary
             Label managers_and_avarageSalaries = new Label(avarageSalaries);
-            managers_and_avarageSalaries.FuzzySumm(managers);
+            managers_and_avarageSalaries.FuzzySubraction(managers);
 
             //Hight Education or Black race
-            Label hightEducation_or_Black = new Label(hightEducation);
-            hightEducation_or_Black.FuzzySubraction(raceLabel);
+            Label hightEducation_or_Black = new Label(hightEducation);//sub
+            hightEducation_or_Black.FuzzySumm(raceLabel);
 
             //Black race and Avarage salaries
             Label blackRace_and_AvarageSalaries = new Label(raceLabel);
-            blackRace_and_AvarageSalaries.FuzzySumm(avarageSalaries);
+            blackRace_and_AvarageSalaries.FuzzySubraction(avarageSalaries);
 
             //hight Education and Married
             Label hightEducation_And_Married = new Label(merried);
-            hightEducation_And_Married.FuzzySumm(hightEducation);
+            hightEducation_And_Married.FuzzySubraction(hightEducation);
 
             //middle age and Avarage salaries
             Label middleAge_and_AvarageSalaries = new Label(avarageAgeTrapezoid);
-            middleAge_and_AvarageSalaries.FuzzySumm(avarageSalaries);
+            middleAge_and_AvarageSalaries.FuzzySubraction(avarageSalaries);
 
             //hight Education or Married
-            Label hightEducation_Or_Married = new Label(merried);
-            hightEducation_Or_Married.FuzzySubraction(hightEducation);
+            Label hightEducation_Or_Married = new Label(merried);//sub
+            hightEducation_Or_Married.FuzzySumm(hightEducation);
 
             //(hight Education or Married)and black Race
             Label hightEducation_Or_Married_And_Black = new Label(hightEducation_Or_Married);
             hightEducation_Or_Married_And_Black.FuzzySumm(raceLabel);
 
-            Label hightEducation_Or_Married_Or_Black = new Label(hightEducation_Or_Married);
-            hightEducation_Or_Married_Or_Black.FuzzySubraction(raceLabel);
+            Label hightEducation_Or_Married_Or_Black = new Label(hightEducation_Or_Married);//sub
+            hightEducation_Or_Married_Or_Black.FuzzySumm(raceLabel);
             #endregion
 
             ReadQuantyficators rq = new ReadQuantyficators();
