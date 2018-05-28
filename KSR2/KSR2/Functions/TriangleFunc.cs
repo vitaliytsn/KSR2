@@ -37,7 +37,7 @@ namespace KSR2.Model.Functions
             if (x > _etykietNum-_etykietaDys && x < _etykietNum+_etykietaDys)
             {
                 if(x<=_etykietNum)
-                return Math.Abs(Math.Abs(_etykietNum)-_etykietaDys-Math.Abs(x))/_etykietaDys;
+                return Math.Abs(Math.Abs(x)-Math.Abs(_etykietNum)-_etykietaDys)/_etykietaDys;
                 else return Math.Abs(Math.Abs(_etykietNum) + _etykietaDys - Math.Abs(x)) / _etykietaDys;
             }
             else return 0;

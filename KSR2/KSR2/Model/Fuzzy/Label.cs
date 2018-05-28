@@ -25,7 +25,7 @@ namespace KSR2.Model.Fuzzy
         {
             get
             {
-                return _fuzz; 
+                return _fuzz;
 
             }
         }
@@ -39,7 +39,7 @@ namespace KSR2.Model.Fuzzy
         }
         public IFunction Function
         {
-            get { return _function;}
+            get { return _function; }
             set { _function = value; }
         }
         public double[] MembershipRatio
@@ -47,9 +47,9 @@ namespace KSR2.Model.Fuzzy
             get { return _membershipRatio; }
             set { _membershipRatio = value; }
         }
-        public Label(string label, IFunction func,Fuzzy1 fuzzy)
+        public Label(string label, IFunction func, Fuzzy1 fuzzy)
         {
-            _insideLabels= new List<Label>();
+            _insideLabels = new List<Label>();
             _labelName = label;
             _fuzz = fuzzy;
             _function = func;
@@ -62,7 +62,7 @@ namespace KSR2.Model.Fuzzy
 
         public Label(Label label)
         {
-            this._insideLabels= new List<Label>();
+            this._insideLabels = new List<Label>();
             foreach (var lab in label._insideLabels)
             {
                 this._insideLabels.Add(new Label(lab));
@@ -70,57 +70,61 @@ namespace KSR2.Model.Fuzzy
             this._labelName = label._labelName;
             this._function = label._function;
             this._fuzz = label._fuzz;
-            this._membershipRatio =new double[Fuzzy.FuzzySet.Length];
-            for (int i=0;i<label._membershipRatio.Length;i++)
+            this._membershipRatio = new double[Fuzzy.FuzzySet.Length];
+            for (int i = 0; i < label._membershipRatio.Length; i++)
             {
-                _membershipRatio[i]=label._membershipRatio[i];
+                _membershipRatio[i] = label._membershipRatio[i];
             }
-          
+
         }
         public double membership(double x)
         {
             return _function.count(x);
         }
 
-        public void FuzzySubraction(Label summ)//czyli or - S norma
-        {
-            _insideLabels.Add(summ);
-            this._labelName = this._labelName +" and "+ summ._labelName;
-            for (int i=0;i<_membershipRatio.Length;i++)
-            {
-                if(summ._membershipRatio[i]< _membershipRatio[i])
-                    _membershipRatio[i] = summ._membershipRatio[i];
-            }
-        }
-       
-        public void FuzzySumm(Label summ) //czyli and T norma
+        public void FuzzySum(Label summ)//czyli or - S norma
         {
             _insideLabels.Add(summ);
             this._labelName = this._labelName + " or " + summ._labelName;
             for (int i = 0; i < _membershipRatio.Length; i++)
             {
-                if (summ._membershipRatio[i] > _membershipRatio[i])
+                if ((summ._membershipRatio[i] > 0 || _membershipRatio[i] > 0))// && !(summ._membershipRatio[i] > 0 && _membershipRatio[i] > 0))
+                {
                     _membershipRatio[i] = summ._membershipRatio[i];
+                }
+                else
+                {
+                    _membershipRatio[i] = 0;
+                }
             }
         }
 
+        public void FuzzySubtraction(Label summ) //czyli and T norma
+        {
+            _insideLabels.Add(summ);
+            this._labelName = this._labelName + " and " + summ._labelName;
+            for (int i = 0; i < _membershipRatio.Length; i++)
+            {
+                if (summ._membershipRatio[i] > 0 && _membershipRatio[i] > 0)
+                    _membershipRatio[i] = summ._membershipRatio[i];
+                else
+                {
+                    _membershipRatio[i] = 0;
+                }
+            }
+        }    
 
 
-        #region Wspolczynniki poprawnosci
 
-        #endregion
-
-
-
-        public  double cardinalNumber()
+        public double cardinalNumber()
         {
             double cardinal = 0;
             foreach (var variable in _membershipRatio)
             {
-                if(variable>0)
-                cardinal += 1;
+                if (variable > 0)
+                    cardinal += 1;
             }
-            return cardinal/Fuzzy.FuzzySet.Length;
+            return cardinal / Fuzzy.FuzzySet.Length;
         }
     }
 }

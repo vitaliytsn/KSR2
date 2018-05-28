@@ -115,7 +115,7 @@ namespace KSR2.Model.Fuzzy
                 t *= label.cardinalNumber();
             }
             t = Math.Pow(t, (double)1 / (qua.InsideQualificators.Count + 1));
-            return t;
+            return 1 - t;
         }
         public static double degreeOfCardinalityKwalifikator(Qualificator qua)//T10  Stopien kardynalnosci Sumaryzatora
         {

@@ -45,7 +45,7 @@ namespace KSR2.Model.LinguisticSum
                 foreach (var lab in label)
                 {
                     string output = "";
-                    //T1-T8
+                    //T1-T5
 
                     #region Kwantyfikator
 

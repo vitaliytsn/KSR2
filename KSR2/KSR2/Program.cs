@@ -58,42 +58,43 @@ namespace KSR2
             Label males = new Label("Males", new TriangleFunc(1, 0.5), genders);
 
             //occupation= managers
-            Label managers = new Label("Maneges", new TrapezoidFunc(2.5, 3.8, 4, 5.2), occupations);
+             Label managers = new Label("Maneges", new TrapezoidFunc(2.5, 3.8, 4, 5.2), occupations);
 
             //Hight Education or avarage Salaries
             Label hightEducation_or_AvarageSalaries = new Label(hightEducation);
-            hightEducation_or_AvarageSalaries.FuzzySumm(avarageSalaries);//sub
+            hightEducation_or_AvarageSalaries.FuzzySubtraction(avarageSalaries);//sub
 
             //managers who has avarage salary
             Label managers_and_avarageSalaries = new Label(avarageSalaries);
-            managers_and_avarageSalaries.FuzzySubraction(managers);
+            managers_and_avarageSalaries.FuzzySum(managers);
 
             //Hight Education or Black race
             Label hightEducation_or_Black = new Label(hightEducation);//sub
-            hightEducation_or_Black.FuzzySumm(raceLabel);
+            hightEducation_or_Black.FuzzySubtraction(raceLabel);
+            
 
             //Black race and Avarage salaries
             Label blackRace_and_AvarageSalaries = new Label(raceLabel);
-            blackRace_and_AvarageSalaries.FuzzySubraction(avarageSalaries);
+            blackRace_and_AvarageSalaries.FuzzySum(avarageSalaries);
 
             //hight Education and Married
             Label hightEducation_And_Married = new Label(merried);
-            hightEducation_And_Married.FuzzySubraction(hightEducation);
+            hightEducation_And_Married.FuzzySum(hightEducation);
 
             //middle age and Avarage salaries
             Label middleAge_and_AvarageSalaries = new Label(avarageAgeTrapezoid);
-            middleAge_and_AvarageSalaries.FuzzySubraction(avarageSalaries);
+            middleAge_and_AvarageSalaries.FuzzySum(avarageSalaries);
 
             //hight Education or Married
             Label hightEducation_Or_Married = new Label(merried);//sub
-            hightEducation_Or_Married.FuzzySumm(hightEducation);
+            hightEducation_Or_Married.FuzzySubtraction(hightEducation);
 
             //(hight Education or Married)and black Race
             Label hightEducation_Or_Married_And_Black = new Label(hightEducation_Or_Married);
-            hightEducation_Or_Married_And_Black.FuzzySumm(raceLabel);
+            hightEducation_Or_Married_And_Black.FuzzySubtraction(raceLabel);
 
             Label hightEducation_Or_Married_Or_Black = new Label(hightEducation_Or_Married);//sub
-            hightEducation_Or_Married_Or_Black.FuzzySumm(raceLabel);
+            hightEducation_Or_Married_Or_Black.FuzzySubtraction(raceLabel);
             #endregion
 
             ReadQuantyficators rq = new ReadQuantyficators();
@@ -114,6 +115,7 @@ namespace KSR2
             #endregion
 
             #region Labels
+            lableList.Add(hightEducation_or_Black);
             lableList.Add(males);
             lableList.Add(managers);
             lableList.Add(selfEmployed);
@@ -130,8 +132,9 @@ namespace KSR2
             lableList.Add(hightEducation_And_Married);
             lableList.Add(hightEducation_or_AvarageSalaries);
             lableList.Add(hightEducation_Or_Married);
-            lableList.Add(hightEducation_or_Black);
+           
             lableList.Add(hightEducation_Or_Married_Or_Black);
+            
             Linquistic l = new Linquistic(lableList, quantyficators);
             l.generateOutput();
             #endregion
