@@ -1,129 +1,78 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using KSR2.Model.Functions;
-using KSR2.Model.Fuzzy.Qualificators;
 
 namespace KSR2.Model.Fuzzy
 {
-    class Label
+    internal class Label
     {
         //sumaryzator
-        private List<Label> _insideLabels;
-        private string _labelName;
-        private Fuzzy1 _fuzz;
-        private IFunction _function;
-        private double[] _membershipRatio;
 
-        public string LabelName
-        {
-            get { return _labelName; }
-        }
-        public Fuzzy1 Fuzzy
-        {
-            get
-            {
-                return _fuzz;
-
-            }
-        }
-        public List<Label> InsideLabels
-        {
-            get
-            {
-                return _insideLabels;
-
-            }
-        }
-        public IFunction Function
-        {
-            get { return _function; }
-            set { _function = value; }
-        }
-        public double[] MembershipRatio
-        {
-            get { return _membershipRatio; }
-            set { _membershipRatio = value; }
-        }
         public Label(string label, IFunction func, Fuzzy1 fuzzy)
         {
-            _insideLabels = new List<Label>();
-            _labelName = label;
-            _fuzz = fuzzy;
-            _function = func;
-            _membershipRatio = new double[_fuzz.FuzzySet.Length];
-            for (int i = 0; i < _fuzz.FuzzySet.Length; i++)
-            {
-                _membershipRatio[i] = membership(_fuzz.FuzzySet[i]);
-            }
+            InsideLabels = new List<Label>();
+            LabelName = label;
+            Fuzzy = fuzzy;
+            Function = func;
+            MembershipRatio = new double[Fuzzy.FuzzySet.Length];
+            for (var i = 0; i < Fuzzy.FuzzySet.Length; i++) MembershipRatio[i] = Membership(Fuzzy.FuzzySet[i]);
         }
 
         public Label(Label label)
         {
-            this._insideLabels = new List<Label>();
-            foreach (var lab in label._insideLabels)
-            {
-                this._insideLabels.Add(new Label(lab));
-            }
-            this._labelName = label._labelName;
-            this._function = label._function;
-            this._fuzz = label._fuzz;
-            this._membershipRatio = new double[Fuzzy.FuzzySet.Length];
-            for (int i = 0; i < label._membershipRatio.Length; i++)
-            {
-                _membershipRatio[i] = label._membershipRatio[i];
-            }
-
-        }
-        public double membership(double x)
-        {
-            return _function.count(x);
+            InsideLabels = new List<Label>();
+            foreach (var lab in label.InsideLabels) InsideLabels.Add(new Label(lab));
+            LabelName = label.LabelName;
+            Function = label.Function;
+            Fuzzy = label.Fuzzy;
+            MembershipRatio = new double[Fuzzy.FuzzySet.Length];
+            for (var i = 0; i < label.MembershipRatio.Length; i++) MembershipRatio[i] = label.MembershipRatio[i];
         }
 
-        public void FuzzySum(Label summ)//czyli or - S norma
+        public string LabelName { get; private set; }
+
+        public Fuzzy1 Fuzzy { get; }
+
+        public List<Label> InsideLabels { get; }
+
+        public IFunction Function { get; set; }
+
+        public double[] MembershipRatio { get; set; }
+
+        public double Membership(double x)
         {
-            _insideLabels.Add(summ);
-            this._labelName = this._labelName + " or " + summ._labelName;
-            for (int i = 0; i < _membershipRatio.Length; i++)
-            {
-                if ((summ._membershipRatio[i] > 0 || _membershipRatio[i] > 0))// && !(summ._membershipRatio[i] > 0 && _membershipRatio[i] > 0))
-                {
-                    _membershipRatio[i] = summ._membershipRatio[i];
-                }
+            return Function.Count(x);
+        }
+
+        public void FuzzySum(Label summ) //czyli or - S norma
+        {
+            InsideLabels.Add(summ);
+            LabelName = LabelName + " or " + summ.LabelName;
+            for (var i = 0; i < MembershipRatio.Length; i++)
+                if (summ.MembershipRatio[i] > 0 || MembershipRatio[i] > 0
+                ) // && !(summ._membershipRatio[i] > 0 && _membershipRatio[i] > 0))
+                    MembershipRatio[i] = summ.MembershipRatio[i];
                 else
-                {
-                    _membershipRatio[i] = 0;
-                }
-            }
+                    MembershipRatio[i] = 0;
         }
 
         public void FuzzySubtraction(Label summ) //czyli and T norma
         {
-            _insideLabels.Add(summ);
-            this._labelName = this._labelName + " and " + summ._labelName;
-            for (int i = 0; i < _membershipRatio.Length; i++)
-            {
-                if (summ._membershipRatio[i] > 0 && _membershipRatio[i] > 0)
-                    _membershipRatio[i] = summ._membershipRatio[i];
+            InsideLabels.Add(summ);
+            LabelName = LabelName + " and " + summ.LabelName;
+            for (var i = 0; i < MembershipRatio.Length; i++)
+                if (summ.MembershipRatio[i] > 0 && MembershipRatio[i] > 0)
+                    MembershipRatio[i] = summ.MembershipRatio[i];
                 else
-                {
-                    _membershipRatio[i] = 0;
-                }
-            }
-        }    
+                    MembershipRatio[i] = 0;
+        }
 
 
-
-        public double cardinalNumber()
+        public double CardinalNumber()
         {
             double cardinal = 0;
-            foreach (var variable in _membershipRatio)
-            {
+            foreach (var variable in MembershipRatio)
                 if (variable > 0)
                     cardinal += 1;
-            }
             return cardinal / Fuzzy.FuzzySet.Length;
         }
     }

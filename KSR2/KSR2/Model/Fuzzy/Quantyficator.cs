@@ -1,37 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KSR2.Model.Functions;
+﻿using KSR2.Model.Functions;
 
 namespace KSR2.Model.Fuzzy.Qualificators
 {
-  public  class Quantyficator
+    public class Quantyficator
     {
-        private string _labelName;
-        private IFunction _function;
+        public IFunction Function { get; set; }
 
-        public IFunction Function
+        public string LablelName { get; set; }
+
+        public double Count(double d)
         {
-            get { return _function; }
-            set { _function = value; }
+            return Function.Count(d);
         }
 
-        public string LablelName
+        public double CardinalNumber()
         {
-            get { return _labelName; }
-            set { _labelName = value; }
-        }
-
-        public double count(double d)
-        {
-            return _function.count(d);
-        }
-
-        public double cardinalNumber()
-        {
-            return  _function.distance();
+            return Function.Distance();
         }
     }
 }

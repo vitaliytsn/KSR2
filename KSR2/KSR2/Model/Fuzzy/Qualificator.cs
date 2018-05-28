@@ -1,86 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using KSR2.Model.Functions;
 
 namespace KSR2.Model.Fuzzy
 {
-    class Qualificator
+    internal class Qualificator
     {
-        private List<Qualificator> _insideQualificators;
-        private string _qualificatorName;
-        private Label _label;
-        private IFunction _function;
-        private double[] _membershipRatio;
         private Fuzzy1 _fuzz;
 
-        public Qualificator(string name, IFunction func, Label label,Fuzzy1 fuzz)
+        public Qualificator(string name, IFunction func, Label label, Fuzzy1 fuzz)
         {
-            _insideQualificators = new List<Qualificator>();
-            _qualificatorName = name;
-            _label = label;
-            _function = func;
-            this._fuzz = fuzz;
-            _membershipRatio = new double[_label.Fuzzy.FuzzySet.Length];
-            for (int i = 0; i < _label.Fuzzy.FuzzySet.Length; i++)
-            {
-                _membershipRatio[i] = membership(fuzz.FuzzySet[i]);
-            }
+            InsideQualificators = new List<Qualificator>();
+            QualificatorName = name;
+            Labell = label;
+            Function = func;
+            _fuzz = fuzz;
+            MembershipRatio = new double[Labell.Fuzzy.FuzzySet.Length];
+            for (var i = 0; i < Labell.Fuzzy.FuzzySet.Length; i++) MembershipRatio[i] = Membership(fuzz.FuzzySet[i]);
 
-            for (int i = 0; i < _membershipRatio.Length; i++)
-            {
-                if (_membershipRatio[i] > _label.MembershipRatio[i])
-                    _membershipRatio[i] = _label.MembershipRatio[i];
-            }
+            for (var i = 0; i < MembershipRatio.Length; i++)
+                if (MembershipRatio[i] > Labell.MembershipRatio[i])
+                    MembershipRatio[i] = Labell.MembershipRatio[i];
 
-            _label.MembershipRatio = _membershipRatio;
+            Labell.MembershipRatio = MembershipRatio;
         }
 
 
-
-        public List<Qualificator> InsideQualificators
-        {
-            get { return _insideQualificators; }
-        }
+        public List<Qualificator> InsideQualificators { get; }
 
 
-        public string QualificatorName
-        {
-            get { return _qualificatorName; }
-        }
-        public Label Labell
-        {
-            get
-            {
-                return _label;
+        public string QualificatorName { get; }
 
-            }
-        }
-        public IFunction Function
+        public Label Labell { get; }
+
+        public IFunction Function { get; set; }
+
+        public double[] MembershipRatio { get; set; }
+
+        public double Membership(double x)
         {
-            get { return _function; }
-            set { _function = value; }
+            return Function.Count(x);
         }
-        public double[] MembershipRatio
-        {
-            get { return _membershipRatio; }
-            set { _membershipRatio = value; }
-        }
-        public double membership(double x)
-        {
-            return _function.count(x);
-        }
-        public double cardinalNumber()
+
+        public double CardinalNumber()
         {
             double cardinal = 0;
-            foreach (var variable in _membershipRatio)
-            {
+            foreach (var variable in MembershipRatio)
                 if (variable > 0)
                     cardinal += 1;
-            }
-            return cardinal / _label.MembershipRatio.Length;
+            return cardinal / Labell.MembershipRatio.Length;
         }
     }
 }

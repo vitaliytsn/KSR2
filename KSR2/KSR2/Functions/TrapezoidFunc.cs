@@ -1,41 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KSR2.Model.Functions
+﻿namespace KSR2.Model.Functions
 {
-    public class TrapezoidFunc:IFunction
+    public class TrapezoidFunc : IFunction
     {
-        private double a;
-        private double b;
-        private double c;
-        private double d;
+        private readonly double _a;
+        private readonly double _b;
+        private readonly double _c;
+
+        private readonly double _d;
         //      a       c
 
         //b                  d
-        public TrapezoidFunc(double a,double b,double c,double d)
+        public TrapezoidFunc(double a, double b, double c, double d)
         {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-            this.d = d;
+            _a = a;
+            _b = b;
+            _c = c;
+            _d = d;
         }
 
-        public double square()
+        public double Square()
         {
-            return (a - b) * (d - c);
+            return (_a - _b) * (_d - _c);
         }
-        public double distance()
+
+        public double Distance()
         {
-            return d-b;
+            return _d - _b;
         }
-        public double count(double x)
+
+        public double Count(double x)
         {
-            if (x >= a && x <= c) return 1;
-            if (x > b && x < a) return (x - b) / (a - b);
-            if (x > c && x < d) return (d - x) / (d - c);
+            if (x >= _a && x <= _c) return 1;
+            if (x > _b && x < _a) return (x - _b) / (_a - _b);
+            if (x > _c && x < _d) return (_d - x) / (_d - _c);
             return 0;
         }
     }

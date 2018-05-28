@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KSR2.Model.Functions
+﻿namespace KSR2.Model.Functions
 {
-  public  interface IFunction
+    public interface IFunction
     {
-        double count(double x);
-        double distance();
-        double square();
+        double Count(double x);
+        double Distance();
+        double Square();
     }
 }

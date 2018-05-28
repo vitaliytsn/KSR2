@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KSR2.Model.Enums;
+﻿using KSR2.Model.Enums;
 
 namespace KSR2.Model.ParsingData
 {
-   public class Person
+    public class Person
     {
-        public double age { get; set; }
-        public WorkClass workclass { get; set; }
-        public int salary { get; set; }
-        public Education education { get; set; }
+        public double Age { get; set; }
+        public WorkClass Workclass { get; set; }
+        public int Salary { get; set; }
+
+        public Education Education { get; set; }
+
         //nie wczytuje
-        public MartialStatus martialStatus { get; set; }
-        public Occupation occupation{get; set; }
-        public RelationShip relationShip { get; set; }
-        public Rase race { get; set; }
-        public Sex gender { get; set; }
-        public int capitalGain { get; set; }
-        public int capitalLoss { get; set; }
-        public int hoursPerWeek { get; set; }
+        public MartialStatus MartialStatus { get; set; }
+        public Occupation Occupation { get; set; }
+        public RelationShip RelationShip { get; set; }
+        public Rase Race { get; set; }
+        public Sex Gender { get; set; }
+        public int CapitalGain { get; set; }
+        public int CapitalLoss { get; set; }
+
+        public int HoursPerWeek { get; set; }
         //nie czytam dalej
     }
 }

@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KSR2.Model.Enums
+﻿namespace KSR2.Model.Enums
 {
     public enum Education
     {
         Bachelors,
         Masters,
         Doctorate,
-        Some_College,
+        SomeCollege,
 
         Eleventh,
-        HS_grad,
-        Prof_school,
-        Assoc_acdm,
-        Assoc_voc,
+        HsGrad,
+        ProfSchool,
+        AssocAcdm,
+        AssocVoc,
         Nineth,
-        Seventh_Eighth
-        ,Tenth,
+        SeventhEighth,
+        Tenth,
         Preschool,
         Twelveth,
-        Firsth_Fourth
+        FirsthFourth
     }
 }
