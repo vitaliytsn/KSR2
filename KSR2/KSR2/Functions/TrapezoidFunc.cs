@@ -18,10 +18,8 @@
             _d = d;
         }
 
-        public double Square()
-        {
-            return (_a - _b) * (_d - _c);
-        }
+        public double Square() => (_a - _b) * (_d - _c);
+        
 
         public double Distance()
         {

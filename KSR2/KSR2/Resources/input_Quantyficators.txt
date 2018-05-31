@@ -1,0 +1,7 @@
+very_few TrapezoidFunction (100,300,600,1100)
+minority TriangleFunction (3000,2000)
+around_one_third TrapezoidFunction (4500,6000,8000,9500)
+majority TrapezoidFunction (19000,20000,22000,23040)
+almost_half TrapezoidFunction (9000,10000,11000,11300)
+around_the_half TriangleFunction (11520,1000)
+around_one_third TrapezoidFunction (11000,13000,16000,19001)

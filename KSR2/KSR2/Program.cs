@@ -61,39 +61,39 @@ namespace KSR2
 
             //Hight Education or avarage Salaries
             var hightEducationOrAvarageSalaries = new Label(hightEducation);
-            hightEducationOrAvarageSalaries.FuzzySubtraction(avarageSalaries); //sub
+            hightEducationOrAvarageSalaries.FuzzySum(avarageSalaries); //sub
 
             //managers who has avarage salary
             var managersAndAvarageSalaries = new Label(avarageSalaries);
-            managersAndAvarageSalaries.FuzzySum(managers);
+            managersAndAvarageSalaries.FuzzySubtraction(managers);
 
             //Hight Education or Black race
             var hightEducationOrBlack = new Label(hightEducation); //sub
-            hightEducationOrBlack.FuzzySubtraction(raceLabel);
+            hightEducationOrBlack.FuzzySum(raceLabel);
 
 
             //Black race and Avarage salaries
             var blackRaceAndAvarageSalaries = new Label(raceLabel);
-            blackRaceAndAvarageSalaries.FuzzySum(avarageSalaries);
+            blackRaceAndAvarageSalaries.FuzzySubtraction(avarageSalaries);
 
             //hight Education and Married
             var hightEducationAndMarried = new Label(merried);
-            hightEducationAndMarried.FuzzySum(hightEducation);
+            hightEducationAndMarried.FuzzySubtraction(hightEducation);
 
             //middle age and Avarage salaries
             var middleAgeAndAvarageSalaries = new Label(avarageAgeTrapezoid);
-            middleAgeAndAvarageSalaries.FuzzySum(avarageSalaries);
+            middleAgeAndAvarageSalaries.FuzzySubtraction(avarageSalaries);
 
             //hight Education or Married
             var hightEducationOrMarried = new Label(merried); //sub
-            hightEducationOrMarried.FuzzySubtraction(hightEducation);
+            hightEducationOrMarried.FuzzySum(hightEducation);
 
             //(hight Education or Married)and black Race
             var hightEducationOrMarriedAndBlack = new Label(hightEducationOrMarried);
-            hightEducationOrMarriedAndBlack.FuzzySubtraction(raceLabel);
+            hightEducationOrMarriedAndBlack.FuzzySum(raceLabel);
 
             var hightEducationOrMarriedOrBlack = new Label(hightEducationOrMarried); //sub
-            hightEducationOrMarriedOrBlack.FuzzySubtraction(raceLabel);
+            hightEducationOrMarriedOrBlack.FuzzySum(raceLabel);
 
             #endregion
 
@@ -108,7 +108,7 @@ namespace KSR2
             var hightEducationMarried = new Qualificator(" Who Has Hight Level Education ", new TriangleFunc(1, 2),
                 merried, educations);
             var avarageAgeTriangleAvarageSalaries = new Qualificator(" Has Middle Age ", new TriangleFunc(30, 10),
-                hightEducationOrMarriedOrBlack, ages);
+                avarageSalaries, ages);
             var managersAvarageSalaries = new Qualificator("who are Maneges ", new TrapezoidFunc(2.5, 3.8, 4, 5.2),
                 avarageSalaries, occupations);
             qualificators.Add(avarageAgeTriangleAvarageSalaries);
@@ -121,26 +121,27 @@ namespace KSR2
             #endregion
 
             #region Labels
-
-            lableList.Add(hightEducationOrBlack);
-            lableList.Add(males);
-            lableList.Add(managers);
-            lableList.Add(selfEmployed);
             lableList.Add(raceLabel);
             lableList.Add(avarageSalaries);
             lableList.Add(hightEducation);
             lableList.Add(avarageAgeTrapezoid);
             lableList.Add(merried);
-            lableList.Add(avarageAgeTrapezoid);
+            lableList.Add(males);
+            lableList.Add(managers);
+            lableList.Add(selfEmployed);
 
-            lableList.Add(managersAndAvarageSalaries);
             lableList.Add(middleAgeAndAvarageSalaries);
             lableList.Add(blackRaceAndAvarageSalaries);
             lableList.Add(hightEducationAndMarried);
+            lableList.Add(managersAndAvarageSalaries);
+
             lableList.Add(hightEducationOrAvarageSalaries);
             lableList.Add(hightEducationOrMarried);
-
+            lableList.Add(hightEducationOrBlack);
             lableList.Add(hightEducationOrMarriedOrBlack);
+
+
+
 
             var l = new Linquistic(lableList, quantyficators);
             l.GenerateOutput();

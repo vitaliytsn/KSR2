@@ -11,7 +11,7 @@ namespace KSR2.Model.ParsingData
         {
             //Gender,Weight,Height,ShirtSize,FootSize,Age,Race
             var people = new List<Person>();
-            var lines = File.ReadAllLines(@"database.txt");
+            var lines = File.ReadAllLines(@"../../Resources/database.txt");
 
             for (var q = 0; q < lines.Length; q++)
             {

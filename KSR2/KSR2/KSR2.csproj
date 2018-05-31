@@ -68,5 +68,10 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\database.txt" />
+    <Content Include="Resources\input_Quantyficators.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
